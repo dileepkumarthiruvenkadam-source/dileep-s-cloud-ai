@@ -5,7 +5,6 @@ const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Education', href: '#education' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
@@ -20,7 +19,6 @@ export const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Determine active section
       const sections = navItems.map(item => item.href.slice(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
@@ -50,7 +48,7 @@ export const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/80 backdrop-blur-lg border-b border-border/50'
+          ? 'bg-background/90 backdrop-blur-lg border-b border-primary/20'
           : 'bg-transparent'
       }`}
     >
@@ -59,13 +57,10 @@ export const Navigation = () => {
           {/* Logo */}
           <a
             href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#home');
-            }}
+            onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
             className="font-heading font-bold text-xl text-foreground hover:text-primary transition-colors"
           >
-            DK<span className="text-primary">.</span>
+            DK<span className="text-primary text-glow">.</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -74,13 +69,8 @@ export const Navigation = () => {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-                className={`nav-link ${
-                  activeSection === item.href.slice(1) ? 'nav-link-active' : ''
-                }`}
+                onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
+                className={`nav-link ${activeSection === item.href.slice(1) ? 'nav-link-active' : ''}`}
               >
                 {item.label}
               </a>
@@ -99,19 +89,14 @@ export const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
+          <div className="md:hidden py-4 border-t border-primary/20 animate-fade-in">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className={`nav-link py-2 ${
-                    activeSection === item.href.slice(1) ? 'nav-link-active' : ''
-                  }`}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
+                  className={`nav-link py-2 ${activeSection === item.href.slice(1) ? 'nav-link-active' : ''}`}
                 >
                   {item.label}
                 </a>
