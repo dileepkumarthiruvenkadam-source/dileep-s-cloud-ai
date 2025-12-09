@@ -10,20 +10,20 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-border/50">
-      <div className="section-container">
+    <footer className="py-12 border-t border-primary/20 relative">
+      <div className="absolute inset-0 hex-pattern opacity-30" />
+      
+      <div className="section-container relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <a href="#home" className="font-heading font-bold text-xl inline-block">
-              DK<span className="text-primary">.</span>
+              DK<span className="text-primary text-glow">.</span>
             </a>
             <p className="text-muted-foreground text-sm mt-2">
-              © {currentYear} Dileep Kumar Thiruvenkadam. All rights reserved.
+              © {currentYear} Dileep Kumar Thiruvenkadam
             </p>
           </div>
 
-          {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
@@ -32,7 +32,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="p-2 rounded-lg bg-secondary border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+                className="p-2 bg-secondary border border-primary/30 text-muted-foreground hover:text-primary hover:border-primary transition-all clip-corner-sm"
               >
                 <Icon size={20} />
               </a>
@@ -40,9 +40,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Made with love */}
-        <div className="mt-8 pt-8 border-t border-border/30 text-center">
-          <p className="text-muted-foreground text-sm flex items-center justify-center gap-1">
+        <div className="mt-8 pt-8 border-t border-primary/20 text-center">
+          <p className="text-muted-foreground text-sm flex items-center justify-center gap-1 uppercase tracking-wider">
             Made with <Heart size={14} className="text-primary" /> in Germany
           </p>
         </div>
