@@ -52,8 +52,9 @@ export const Hero = () => {
                 <FolderOpen size={18} className="transition-transform group-hover:rotate-12" />
                 View Projects
               </button>
-              <a 
-                href="#" 
+              <a
+                href="/Dileep_Resume.pdf"
+                download="Dileep_Resume.pdf"
                 className="btn-secondary flex items-center justify-center gap-2 group"
               >
                 <Download size={18} className="transition-transform group-hover:translate-y-1" />
