@@ -108,10 +108,10 @@ export default {
         },
         "cyber-pulse": {
           "0%, 100%": { 
-            boxShadow: "0 0 5px hsl(160 100% 63% / 0.3), inset 0 0 5px hsl(160 100% 63% / 0.1)",
+            boxShadow: "0 0 5px hsl(0 0% 98% / 0.2), inset 0 0 5px hsl(0 0% 98% / 0.05)",
           },
           "50%": { 
-            boxShadow: "0 0 20px hsl(160 100% 63% / 0.5), inset 0 0 10px hsl(160 100% 63% / 0.2)",
+            boxShadow: "0 0 20px hsl(0 0% 98% / 0.3), inset 0 0 10px hsl(0 0% 98% / 0.1)",
           },
         },
         "text-flicker": {
