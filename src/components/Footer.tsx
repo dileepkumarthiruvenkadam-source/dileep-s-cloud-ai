@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { getVisitorLocation, VisitorLocation } from '@/lib/getVisitorLocation';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com', label: 'GitHub' },
@@ -8,6 +10,50 @@ const socialLinks = [
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [collectLocation, setCollectLocation] = useState<boolean>(() => {
+    try {
+      const v = localStorage.getItem('collect_location');
+      return v === null ? false : v === 'true';
+    } catch {
+      return false;
+    }
+  });
+  const [lastLocation, setLastLocation] = useState<VisitorLocation | null>(null);
+
+  useEffect(() => {
+    if (!collectLocation) return;
+    let mounted = true;
+    (async () => {
+      const loc = await getVisitorLocation();
+      if (mounted) {
+        setLastLocation(loc);
+        // For now, log locally
+        console.log('Visitor location (approx):', loc);
+
+        // Send to Netlify Function to persist (best-effort)
+        try {
+          fetch('/.netlify/functions/collect-location', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ location: loc, page: window.location.pathname, ua: navigator.userAgent }),
+          }).catch((e) => console.debug('collect-location request failed', e));
+        } catch (e) {
+          console.debug('collect-location post error', e);
+        }
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, [collectLocation]);
+
+  const toggleCollect = (v?: boolean) => {
+    const next = typeof v === 'boolean' ? v : !collectLocation;
+    setCollectLocation(next);
+    try {
+      localStorage.setItem('collect_location', next ? 'true' : 'false');
+    } catch {}
+  };
 
   return (
     <footer className="py-12 border-t border-primary/20 relative">
@@ -39,11 +85,35 @@ export const Footer = () => {
             ))}
           </div>
         </div>
-
         <div className="mt-8 pt-8 border-t border-primary/20 text-center">
-          <p className="text-muted-foreground text-sm flex items-center justify-center gap-1 uppercase tracking-wider">
+          <div className="flex items-center justify-center gap-4">
+            <p className="text-muted-foreground text-sm flex items-center gap-2">
+              <span className="text-xs uppercase">Location</span>
+              <button
+                onClick={() => toggleCollect()}
+                className={`ml-2 inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm transition-all ${collectLocation ? 'bg-primary text-primary-foreground' : 'bg-secondary text-muted-foreground'}`}
+                aria-pressed={collectLocation}
+              >
+                {collectLocation ? 'Enabled' : 'Disabled'}
+              </button>
+            </p>
+
+            <p className="text-muted-foreground text-sm">
+              <small>
+                We may collect anonymized approximate location (city/country) for analytics. <button onClick={() => toggleCollect(false)} className="underline">Disable</button>
+              </small>
+            </p>
+          </div>
+
+          <p className="text-muted-foreground text-sm mt-4">
             Made with <Heart size={14} className="text-primary" /> in Germany
           </p>
+
+          {lastLocation && (
+            <p className="text-muted-foreground text-xs mt-2">
+              Last lookup: {lastLocation.city ?? '—'}, {lastLocation.region ?? ''} {lastLocation.country ?? ''}
+            </p>
+          )}
         </div>
       </div>
     </footer>
