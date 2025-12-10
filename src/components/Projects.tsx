@@ -54,7 +54,11 @@ export const Projects = () => {
       <div className="absolute inset-0 bg-grid-pattern opacity-30" />
       
       <div className="section-container relative z-10">
-        <div className="text-center mb-16">
+        <div 
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+          }`}
+        >
           <span className="text-primary text-sm font-bold uppercase tracking-widest">[ Portfolio ]</span>
           <h2 className="section-title mt-2">
             Featured <span className="text-primary text-glow">Projects</span>
@@ -65,29 +69,43 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`transition-all duration-700 ${
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`transition-all duration-700 ease-out ${
+                isInView 
+                  ? 'opacity-100 translate-y-0 blur-0' 
+                  : 'opacity-0 translate-y-12 blur-sm'
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: isInView ? `${200 + index * 100}ms` : '0ms' }}
             >
-              <div className={`card-cyber card-hover p-6 h-full flex flex-col ${
-                project.featured ? 'border-primary/50' : ''
-              }`}>
+              <div className={`card-cyber p-6 h-full flex flex-col group transition-all duration-500 hover:translate-y-[-8px] ${
+                project.featured ? 'border-primary/50 animate-cyber-pulse' : ''
+              }`}
+              style={{ 
+                transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+              >
                 {project.featured && (
                   <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider mb-4">
-                    <Sparkles size={14} />
+                    <Sparkles size={14} className="animate-pulse" />
                     Featured
                   </div>
                 )}
 
-                <h3 className="font-heading font-semibold text-lg uppercase">{project.title}</h3>
+                <h3 className="font-heading font-semibold text-lg uppercase group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
                 <p className="text-muted-foreground mt-2 text-sm">{project.description}</p>
                 <p className="text-muted-foreground/70 mt-2 text-sm">{project.details}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="skill-badge text-xs">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span 
+                      key={tag} 
+                      className={`skill-badge text-xs transition-all duration-300 ${
+                        isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                      }`}
+                      style={{ transitionDelay: isInView ? `${400 + index * 100 + tagIndex * 50}ms` : '0ms' }}
+                    >
                       {tag}
                     </span>
                   ))}
@@ -95,12 +113,12 @@ export const Projects = () => {
 
                 {/* Actions */}
                 <div className="flex gap-4 mt-auto pt-6">
-                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
-                    <Github size={16} />
+                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider group/btn">
+                    <Github size={16} className="transition-transform duration-300 group-hover/btn:rotate-12" />
                     Code
                   </button>
-                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
-                    <ExternalLink size={16} />
+                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider group/btn">
+                    <ExternalLink size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                     Demo
                   </button>
                 </div>
