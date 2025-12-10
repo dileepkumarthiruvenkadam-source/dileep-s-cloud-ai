@@ -1,0 +1,2 @@
+timestamp,ip,country,region,city,lat,lon,page,userAgent
+2025-12-10T23:31:16.316Z,1.2.3.4,Test,T,C,0,0,/test,curl-test
