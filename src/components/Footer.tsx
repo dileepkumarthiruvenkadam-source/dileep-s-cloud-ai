@@ -13,27 +13,54 @@ export const Footer = () => {
 
   useEffect(() => {
     let mounted = true;
-    (async () => {
+
+    const sendAndPost = async () => {
       try {
         const loc = await getVisitorLocation();
         if (!mounted) return;
         console.debug('Visitor location (approx):', loc);
-        // Send to Netlify Function to persist — server controls whether to accept/store
         try {
-          fetch('/.netlify/functions/collect-location', {
+          await fetch('/.netlify/functions/collect-location', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ location: loc, page: window.location.pathname, ua: navigator.userAgent }),
-          }).catch((e) => console.debug('collect-location request failed', e));
+          });
         } catch (e) {
           console.debug('collect-location post error', e);
         }
       } catch (e) {
         // ignore lookup errors
       }
-    })();
+    };
+
+    // send on initial mount
+    sendAndPost();
+
+    // Listen for SPA navigation changes (pushState/replaceState/popstate)
+    const onLocationChange = () => {
+      sendAndPost();
+    };
+
+    // Monkey-patch history methods to emit a custom event
+    const _wr = (type) => {
+      const orig = history[type];
+      return function () {
+        const res = orig.apply(this, arguments);
+        const ev = new Event('locationchange');
+        window.dispatchEvent(ev);
+        return res;
+      };
+    };
+    history.pushState = _wr('pushState');
+    history.replaceState = _wr('replaceState');
+
+    window.addEventListener('popstate', onLocationChange);
+    window.addEventListener('locationchange', onLocationChange);
+
     return () => {
       mounted = false;
+      window.removeEventListener('popstate', onLocationChange);
+      window.removeEventListener('locationchange', onLocationChange);
     };
   }, []);
 
