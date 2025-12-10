@@ -113,14 +113,29 @@ export const Projects = () => {
 
                 {/* Actions */}
                 <div className="flex gap-4 mt-auto pt-6">
-                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider group/btn">
-                    <Github size={16} className="transition-transform duration-300 group-hover/btn:rotate-12" />
-                    Code
-                  </button>
-                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider group/btn">
-                    <ExternalLink size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
-                    Demo
-                  </button>
+                  {project.repo ? (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider"
+                    >
+                      <Github size={16} className="transition-transform duration-300" />
+                      Code
+                    </a>
+                  ) : null}
+
+                  {project.demo ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider"
+                    >
+                      <ExternalLink size={16} className="transition-transform duration-300" />
+                      Demo
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </div>
