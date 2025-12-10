@@ -8,13 +8,14 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden scanlines scanline-overlay"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-pattern" />
-      <div className="absolute inset-0 hex-pattern" />
-      <div className="gradient-orb gradient-orb-primary w-[600px] h-[600px] -top-64 -right-64 animate-pulse-glow" />
-      <div className="gradient-orb gradient-orb-secondary w-[500px] h-[500px] -bottom-48 -left-48 animate-pulse-glow" style={{ animationDelay: '2s' }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-black" />
+      <div className="absolute inset-0 stars-bg opacity-60" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+      <div className="gradient-orb gradient-orb-primary w-[400px] h-[400px] -top-32 -right-32 animate-pulse-glow" />
+      <div className="gradient-orb gradient-orb-secondary w-[300px] h-[300px] -bottom-24 -left-24 animate-pulse-glow" style={{ animationDelay: '2s' }} />
 
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
