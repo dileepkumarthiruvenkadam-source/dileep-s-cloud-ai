@@ -60,19 +60,78 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Profile Image */}
+          {/* Profile HUD */}
           <div className="order-1 lg:order-2 flex justify-center opacity-0 animate-scale-in animation-delay-200">
-            <div className="relative">
+            <div className="relative w-72 sm:w-80 lg:w-[400px]">
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-primary/20 blur-[60px] animate-pulse-glow" />
+              <div className="absolute inset-0 bg-primary/15 blur-[80px] animate-pulse-glow" />
               
-              {/* Simple Avatar Circle */}
+              {/* Main HUD Container */}
               <div className="relative animate-float">
-                <div className="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full border-2 border-primary/40 bg-card/80 backdrop-blur-sm flex flex-col items-center justify-center transition-all duration-500 hover:border-primary hover:shadow-[0_0_40px_hsl(160_100%_63%/0.3)]">
-                  <span className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold text-primary text-glow">
-                    DK
-                  </span>
-                  <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-[0.2em] mt-2">Dileep Kumar</p>
+                {/* Top status bar */}
+                <div className="flex justify-between items-start mb-2 text-[10px] uppercase tracking-wider">
+                  <div className="text-primary font-mono">
+                    <span className="opacity-60">SYS:</span> ONLINE
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(8)].map((_, i) => (
+                      <div key={i} className={`w-1 h-3 ${i < 6 ? 'bg-primary' : 'bg-primary/30'}`} />
+                    ))}
+                  </div>
+                  <div className="text-muted-foreground font-mono">
+                    <span className="opacity-60">ID:</span> DK-001
+                  </div>
+                </div>
+
+                {/* HUD Frame */}
+                <div className="relative border border-primary/30 bg-card/40 backdrop-blur-md p-8">
+                  {/* Corner brackets */}
+                  <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary" />
+                  <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary" />
+                  <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary" />
+                  <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary" />
+                  
+                  {/* Tracking label */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-background px-3 py-0.5 border border-primary/50">
+                    <span className="text-[10px] text-primary font-mono uppercase tracking-widest">OBJ. 001 • TRACKING</span>
+                  </div>
+
+                  {/* Center content */}
+                  <div className="flex flex-col items-center py-6">
+                    {/* Crosshair */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 pointer-events-none opacity-30">
+                      <div className="absolute top-0 left-1/2 w-px h-4 bg-primary -translate-x-1/2" />
+                      <div className="absolute bottom-0 left-1/2 w-px h-4 bg-primary -translate-x-1/2" />
+                      <div className="absolute left-0 top-1/2 w-4 h-px bg-primary -translate-y-1/2" />
+                      <div className="absolute right-0 top-1/2 w-4 h-px bg-primary -translate-y-1/2" />
+                    </div>
+
+                    <span className="text-6xl sm:text-7xl lg:text-8xl font-heading font-bold text-primary text-glow relative z-10">
+                      DK
+                    </span>
+                    
+                    {/* Name with decorative lines */}
+                    <div className="flex items-center gap-3 mt-4">
+                      <div className="w-8 h-px bg-gradient-to-r from-transparent to-primary" />
+                      <p className="text-muted-foreground text-xs uppercase tracking-[0.3em] font-mono">Dileep Kumar</p>
+                      <div className="w-8 h-px bg-gradient-to-l from-transparent to-primary" />
+                    </div>
+                  </div>
+
+                  {/* Bottom status */}
+                  <div className="absolute -bottom-3 right-4 bg-background px-2 py-0.5">
+                    <span className="text-[10px] text-primary/70 font-mono">LOCKED</span>
+                  </div>
+                </div>
+
+                {/* Bottom info bar */}
+                <div className="flex justify-between items-center mt-2 text-[10px] font-mono uppercase tracking-wider">
+                  <div className="text-muted-foreground">
+                    <span className="text-primary">◉</span> SIGNAL: NORMAL
+                  </div>
+                  <div className="text-muted-foreground">
+                    ACCESS: <span className="text-primary">GRANTED</span>
+                  </div>
                 </div>
               </div>
             </div>
