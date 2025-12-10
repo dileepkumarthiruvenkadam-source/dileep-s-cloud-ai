@@ -217,6 +217,39 @@
     text-shadow: 0 0 20px hsl(0 0% 98% / 0.6), 0 0 40px hsl(0 0% 98% / 0.3);
   }
 
+  /* Keep a named alias for targeted glow (same as .text-glow) */
+  .text-glow-active {
+    text-shadow: 0 0 20px hsl(0 0% 98% / 0.6), 0 0 40px hsl(0 0% 98% / 0.3);
+  }
+
+  /* Cursor effect container (full viewport, ignore pointer events) */
+  .cursor-effect-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .cursor-star {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 1;
+    transform-origin: center center;
+    box-shadow: 0 0 8px rgba(150, 220, 255, 0.9), 0 0 18px rgba(120,200,255,0.7);
+    mix-blend-mode: screen;
+  }
+
+  /* Canvas based cursor effect: ensure it's above UI but below modals/toasts */
+  .cursor-effect-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    /* place below navigation (nav uses z-50) but above background content */
+    z-index: 40;
+    mix-blend-mode: screen;
+  }
+
   .skill-badge {
     @apply px-3 py-1.5 text-sm font-medium bg-secondary border border-primary/30 transition-all duration-200 uppercase tracking-wide;
     clip-path: polygon(

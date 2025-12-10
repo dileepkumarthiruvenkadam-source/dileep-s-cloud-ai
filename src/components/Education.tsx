@@ -9,6 +9,7 @@ const education = [
     location: 'Heilbronn, Germany',
     period: 'Sep 2024 – Present',
     description: 'Focus on software engineering practices, management, and modern software systems.',
+    gpa: '1.9 (German Scale)',
     current: true,
   },
   {

@@ -6,7 +6,9 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // Base should match the repository name when deploying to GitHub Pages
-  base: '/dileep-s-cloud-ai/',
+  // Use root base for Netlify / provider subdomains. If deploying to GitHub Pages
+  // with a repo path, set this to '/dileep-s-cloud-ai/' before building.
+  base: '/',
   server: {
     host: "::",
     port: 8080,

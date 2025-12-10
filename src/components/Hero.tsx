@@ -7,7 +7,7 @@ export const Hero = () => {
   };
 
   // Toggle to show/hide the resume download button. Set to false to hide temporarily.
-  const showResume = false;
+  const showResume = true;
 
   return (
     <section

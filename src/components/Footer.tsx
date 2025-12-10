@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/dileep-kumar-thiruvenkadam-81253a1b7', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:dileepkumarthiruvenkadam@gmail.com', label: 'Email' },
 ];
 
@@ -17,10 +17,10 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <a href="#home" className="font-heading font-bold text-xl inline-block">
-              DK<span className="text-primary text-glow">.</span>
+              <span className="text-primary text-glow-active">Dileep Kumar Thiruvenkadam</span>
             </a>
             <p className="text-muted-foreground text-sm mt-2">
-              © {currentYear} Dileep Kumar Thiruvenkadam
+              © {currentYear} All rights reserved.
             </p>
           </div>
 

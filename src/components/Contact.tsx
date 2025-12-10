@@ -56,7 +56,7 @@ export const Contact = () => {
                 );
               })}
 
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2 mt-6">
+              <a href="https://www.linkedin.com/in/dileep-kumar-thiruvenkadam-81253a1b7" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2 mt-6">
                 <Linkedin size={18} />
                 LinkedIn
               </a>
