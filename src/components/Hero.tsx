@@ -64,30 +64,28 @@ export const Hero = () => {
           <div className="order-1 lg:order-2 flex justify-center opacity-0 animate-scale-in animation-delay-200">
             <div className="relative">
               {/* Glow Effect */}
-              <div 
-                className="absolute inset-0 bg-primary/20 blur-3xl animate-pulse-glow" 
-                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} 
-              />
+              <div className="absolute inset-0 bg-primary/30 blur-[80px] animate-pulse-glow rounded-full" />
               
-              {/* Hexagon Container */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 animate-float">
-                <div 
-                  className="absolute inset-0 bg-card border-2 border-primary/50 flex items-center justify-center animated-border transition-all duration-500 hover:border-primary"
-                  style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                >
-                  <div className="text-center">
-                    <span className="text-6xl sm:text-7xl lg:text-8xl font-heading font-bold text-primary text-glow flicker">
-                      DK
-                    </span>
-                    <p className="text-muted-foreground text-sm mt-2 uppercase tracking-widest">Dileep Kumar</p>
-                  </div>
+              {/* Profile Container */}
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] animate-float">
+                {/* Outer ring */}
+                <div className="absolute inset-0 rounded-full border border-primary/20 animate-spin-slow" />
+                <div className="absolute inset-4 rounded-full border border-primary/30" />
+                
+                {/* Main profile card */}
+                <div className="absolute inset-8 card-cyber flex flex-col items-center justify-center p-6 animated-border">
+                  <span className="text-6xl sm:text-7xl lg:text-8xl font-heading font-bold text-primary text-glow">
+                    DK
+                  </span>
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent my-3" />
+                  <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-[0.3em]">Dileep Kumar</p>
                 </div>
 
-                {/* Decorative corners with animation */}
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-primary opacity-0 animate-fade-up animation-delay-400" />
-                <div className="absolute -top-2 -right-2 w-8 h-8 border-r-2 border-t-2 border-primary opacity-0 animate-fade-up animation-delay-500" />
-                <div className="absolute -bottom-2 -left-2 w-8 h-8 border-l-2 border-b-2 border-primary opacity-0 animate-fade-up animation-delay-600" />
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-primary opacity-0 animate-fade-up animation-delay-700" />
+                {/* Corner accents */}
+                <div className="absolute top-6 left-6 w-4 h-4 border-l-2 border-t-2 border-primary opacity-0 animate-fade-up animation-delay-400" />
+                <div className="absolute top-6 right-6 w-4 h-4 border-r-2 border-t-2 border-primary opacity-0 animate-fade-up animation-delay-500" />
+                <div className="absolute bottom-6 left-6 w-4 h-4 border-l-2 border-b-2 border-primary opacity-0 animate-fade-up animation-delay-600" />
+                <div className="absolute bottom-6 right-6 w-4 h-4 border-r-2 border-b-2 border-primary opacity-0 animate-fade-up animation-delay-700" />
               </div>
             </div>
           </div>
