@@ -6,6 +6,9 @@ export const Hero = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Toggle to show/hide the resume download button. Set to false to hide temporarily.
+  const showResume = false;
+
   return (
     <section
       id="home"
@@ -52,14 +55,16 @@ export const Hero = () => {
                 <FolderOpen size={18} className="transition-transform group-hover:rotate-12" />
                 View Projects
               </button>
-              <a
-                href="/Dileep_Resume.pdf"
-                download="Dileep_Resume.pdf"
-                className="btn-secondary flex items-center justify-center gap-2 group"
-              >
-                <Download size={18} className="transition-transform group-hover:translate-y-1" />
-                Download CV
-              </a>
+              {showResume && (
+                <a
+                  href="/Dileep_Resume.pdf"
+                  download="Dileep_Resume.pdf"
+                  className="btn-secondary flex items-center justify-center gap-2 group"
+                >
+                  <Download size={18} className="transition-transform group-hover:translate-y-1" />
+                  Download CV
+                </a>
+              )}
             </div>
           </div>
 
