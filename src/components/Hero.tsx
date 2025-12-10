@@ -64,28 +64,16 @@ export const Hero = () => {
           <div className="order-1 lg:order-2 flex justify-center opacity-0 animate-scale-in animation-delay-200">
             <div className="relative">
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-primary/30 blur-[80px] animate-pulse-glow rounded-full" />
+              <div className="absolute inset-0 bg-primary/20 blur-[60px] animate-pulse-glow" />
               
-              {/* Profile Container */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] animate-float">
-                {/* Outer ring */}
-                <div className="absolute inset-0 rounded-full border border-primary/20 animate-spin-slow" />
-                <div className="absolute inset-4 rounded-full border border-primary/30" />
-                
-                {/* Main profile card */}
-                <div className="absolute inset-8 card-cyber flex flex-col items-center justify-center p-6 animated-border">
-                  <span className="text-6xl sm:text-7xl lg:text-8xl font-heading font-bold text-primary text-glow">
+              {/* Simple Avatar Circle */}
+              <div className="relative animate-float">
+                <div className="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full border-2 border-primary/40 bg-card/80 backdrop-blur-sm flex flex-col items-center justify-center transition-all duration-500 hover:border-primary hover:shadow-[0_0_40px_hsl(160_100%_63%/0.3)]">
+                  <span className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold text-primary text-glow">
                     DK
                   </span>
-                  <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent my-3" />
-                  <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-[0.3em]">Dileep Kumar</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-[0.2em] mt-2">Dileep Kumar</p>
                 </div>
-
-                {/* Corner accents */}
-                <div className="absolute top-6 left-6 w-4 h-4 border-l-2 border-t-2 border-primary opacity-0 animate-fade-up animation-delay-400" />
-                <div className="absolute top-6 right-6 w-4 h-4 border-r-2 border-t-2 border-primary opacity-0 animate-fade-up animation-delay-500" />
-                <div className="absolute bottom-6 left-6 w-4 h-4 border-l-2 border-b-2 border-primary opacity-0 animate-fade-up animation-delay-600" />
-                <div className="absolute bottom-6 right-6 w-4 h-4 border-r-2 border-b-2 border-primary opacity-0 animate-fade-up animation-delay-700" />
               </div>
             </div>
           </div>
