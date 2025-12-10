@@ -14,6 +14,12 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
+  // Server-side toggle: if collection is disabled, skip processing (no writes).
+  // Set COLLECT_LOCATION_ENABLED=true in Netlify env to enable persistent storage.
+  if (process.env.COLLECT_LOCATION_ENABLED !== 'true' && process.env.DRY_RUN !== 'true') {
+    return { statusCode: 204, body: 'Collection disabled' };
+  }
+
   if (!GITHUB_REPO || !GITHUB_TOKEN) {
     return { statusCode: 500, body: 'Function not configured: missing GITHUB_REPO or GITHUB_TOKEN' };
   }
