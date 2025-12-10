@@ -18,16 +18,26 @@ export const About = () => {
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Visual Element */}
-          <div className={`relative transition-all duration-700 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <div 
+            className={`relative transition-all duration-1000 ease-out ${
+              isInView 
+                ? 'opacity-100 translate-x-0 blur-0' 
+                : 'opacity-0 -translate-x-16 blur-sm'
+            }`}
+          >
             <div className="relative">
               {/* Tech Stack Visual */}
-              <div className="card-cyber p-8">
+              <div className="card-cyber p-8 hover-glow">
                 <div className="grid grid-cols-2 gap-4">
                   {['AWS', 'Kubernetes', 'Docker', 'Terraform', 'Python', 'CI/CD'].map((tech, index) => (
                     <div
                       key={tech}
-                      className="p-4 bg-secondary/50 border border-primary/20 text-center transition-all duration-300 hover:border-primary hover:bg-primary/5 clip-corner-sm"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      className={`p-4 bg-secondary/50 border border-primary/20 text-center transition-all duration-500 hover:border-primary hover:bg-primary/10 clip-corner-sm cursor-default ${
+                        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                      }`}
+                      style={{ 
+                        transitionDelay: isInView ? `${300 + index * 100}ms` : '0ms'
+                      }}
                     >
                       <span className="font-heading font-semibold text-foreground uppercase tracking-wide">{tech}</span>
                     </div>
@@ -36,25 +46,36 @@ export const About = () => {
                 
                 {/* Stats */}
                 <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-primary/20">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-primary text-glow font-heading">2+</p>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Years</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-primary text-glow font-heading">6+</p>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Projects</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-primary text-glow font-heading">4</p>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Certs</p>
-                  </div>
+                  {[
+                    { value: '2+', label: 'Years' },
+                    { value: '6+', label: 'Projects' },
+                    { value: '4', label: 'Certs' },
+                  ].map((stat, index) => (
+                    <div 
+                      key={stat.label}
+                      className={`text-center transition-all duration-700 ${
+                        isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                      }`}
+                      style={{ transitionDelay: isInView ? `${800 + index * 150}ms` : '0ms' }}
+                    >
+                      <p className="text-3xl font-bold text-primary text-glow font-heading">{stat.value}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{stat.label}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: Content */}
-          <div className={`transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+          <div 
+            className={`transition-all duration-1000 ease-out ${
+              isInView 
+                ? 'opacity-100 translate-x-0 blur-0' 
+                : 'opacity-0 translate-x-16 blur-sm'
+            }`}
+            style={{ transitionDelay: isInView ? '200ms' : '0ms' }}
+          >
             <span className="text-primary text-sm font-bold uppercase tracking-widest">[ About Me ]</span>
             <h2 className="section-title mt-2">
               Building{' '}
@@ -77,13 +98,16 @@ export const About = () => {
 
             {/* Highlight Badges */}
             <div className="mt-8 grid grid-cols-2 gap-4">
-              {highlights.map(({ icon: Icon, label }) => (
+              {highlights.map(({ icon: Icon, label }, index) => (
                 <div
                   key={label}
-                  className="flex items-center gap-3 p-3 bg-secondary/50 border border-primary/20 clip-corner-sm"
+                  className={`flex items-center gap-3 p-3 bg-secondary/50 border border-primary/20 clip-corner-sm transition-all duration-500 hover:border-primary hover:bg-primary/5 group ${
+                    isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
+                  style={{ transitionDelay: isInView ? `${600 + index * 100}ms` : '0ms' }}
                 >
-                  <div className="p-2 bg-primary/10 border border-primary/30 clip-corner-sm">
-                    <Icon size={18} className="text-primary" />
+                  <div className="p-2 bg-primary/10 border border-primary/30 clip-corner-sm transition-all duration-300 group-hover:bg-primary/20">
+                    <Icon size={18} className="text-primary transition-transform duration-300 group-hover:scale-110" />
                   </div>
                   <span className="text-sm font-medium uppercase tracking-wide">{label}</span>
                 </div>
