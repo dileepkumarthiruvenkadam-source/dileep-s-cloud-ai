@@ -16,6 +16,16 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Cleanup previous deploy worktree (if any)
+        run: |
+          set -e
+          TEMP_FOLDER="github-pages-deploy-action-temp-deployment-folder"
+          # If a previous worktree exists, try removing it; otherwise remove any leftover folder
+          if git worktree list | grep -q "$TEMP_FOLDER"; then
+            git worktree remove "$TEMP_FOLDER" || true
+          fi
+          rm -rf "$TEMP_FOLDER" || true
+
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
