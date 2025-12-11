@@ -36,13 +36,13 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAGES_PAT }}
           singleCommit: true
 
       - name: Ensure Pages site is configured and built
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAGES_PAT }}
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
