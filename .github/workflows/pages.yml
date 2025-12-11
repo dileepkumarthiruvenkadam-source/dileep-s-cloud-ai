@@ -72,16 +72,26 @@ jobs:
               await delay(5000);
             }
 
-      - name: Diagnostic: Pages API check (uses PAGES_PAT)
+      - name: 'Diagnostic: Pages API check (uses PAGES_PAT)'
         env:
           PAGES_PAT: ${{ secrets.PAGES_PAT }}
         run: |
           echo "=== Pages API GET (check current) ==="
-          http_status=$(curl -s -o /tmp/pages_resp -w "%{http_code}" -H "Authorization: token $PAGES_PAT" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/pages" || true)
-          echo "HTTP status: $http_status"
-          cat /tmp/pages_resp || true
+            # Request current Pages config
+            curl -sS \
+              -H "Authorization: token $PAGES_PAT" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/${{ github.repository }}/pages" -o /tmp/pages_resp || true
+          echo "GET response (first 4k bytes):"
+          head -c 4096 /tmp/pages_resp || true
           echo
           echo "=== Pages API POST (attempt create/configure) ==="
-          http_status2=$(curl -s -o /tmp/pages_post_resp -w "%{http_code}" -X POST -H "Authorization: token $PAGES_PAT" -H "Accept: application/vnd.github.v3+json" -d '{"source":{"branch":"gh-pages","path":"/"}}' "https://api.github.com/repos/${{ github.repository }}/pages" || true)
-          echo "POST status: $http_status2"
-          cat /tmp/pages_post_resp || true
+              # Attempt to create/configure Pages (will show permission errors if any)
+              curl -sS -X POST \
+                -H "Authorization: token $PAGES_PAT" \
+                -H "Accept: application/vnd.github.v3+json" \
+                -H "Content-Type: application/json" \
+                --data '{"source":{"branch":"gh-pages","path":"/"}}' \
+                "https://api.github.com/repos/${{ github.repository }}/pages" -o /tmp/pages_post_resp || true
+          echo "POST response (first 4k bytes):"
+          head -c 4096 /tmp/pages_post_resp || true
