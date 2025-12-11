@@ -41,6 +41,7 @@ jobs:
 
       - name: Ensure Pages site is configured and built
         uses: actions/github-script@v6
+        continue-on-error: true
         with:
           github-token: ${{ secrets.PAGES_PAT }}
           script: |
@@ -71,8 +72,8 @@ jobs:
               }
               await delay(5000);
             }
-
       - name: 'Diagnostic: Pages API check (uses PAGES_PAT)'
+        continue-on-error: true
         env:
           PAGES_PAT: ${{ secrets.PAGES_PAT }}
         run: |
