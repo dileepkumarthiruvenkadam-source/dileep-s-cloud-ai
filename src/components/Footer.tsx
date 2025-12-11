@@ -10,8 +10,11 @@ const socialLinks = [
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  // Client-side toggle (default: disabled). Set VITE_COLLECT_LOCATION_ENABLED=true to re-enable.
+  const COLLECT_ENABLED = (import.meta as any).env?.VITE_COLLECT_LOCATION_ENABLED === 'true';
 
   useEffect(() => {
+    if (!COLLECT_ENABLED) return; // collection disabled by default
     let mounted = true;
 
     const sendAndPost = async () => {
