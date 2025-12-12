@@ -96,8 +96,8 @@ export const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-primary/20 text-center">
-          <p className="text-muted-foreground text-sm inline-flex items-center">
+        <div className="mt-8 pt-8 border-t border-primary/20 flex justify-center items-center">
+          <p className="text-muted-foreground text-sm flex items-center">
             Made with&nbsp;<Heart size={14} className="inline-block text-primary" />&nbsp;in Germany
           </p>
         </div>
