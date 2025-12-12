@@ -5,7 +5,7 @@ const highlights = [
   { icon: Briefcase, label: 'DevOps & AI Engineer' },
   { icon: MapPin, label: 'Heilbronn, Germany' },
   { icon: GraduationCap, label: "Master's Student" },
-  { icon: Languages, label: 'EN / Tamil / DE' },
+  { icon: Languages, label: 'EN / DE / TN' },
 ];
 
 export const About = () => {
