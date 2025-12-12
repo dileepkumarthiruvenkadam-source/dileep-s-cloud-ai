@@ -8,13 +8,15 @@ const projects = [
     details: 'Backend components in Python with custom APIs, leveraging prompt engineering and agent behavior design.',
     tags: ['Python', 'LLM', 'AI', 'APIs'],
     featured: true,
+    repo: 'https://github.com/dileepkumarthiruvenkadam-source/nunnarivu.git',
   },
   {
-    title: 'VoidVision Video Pipeline',
+    title: 'YouTube Video Pipeline',
     description: 'End-to-end automated pipeline converting text prompts into YouTube-ready videos.',
     details: 'Includes LLM reasoning, script generation, TTS, video rendering, and containerized modules.',
     tags: ['LLM', 'TTS', 'Containers', 'Automation'],
     featured: true,
+    repo: 'https://github.com/dileepkumarthiruvenkadam-source/ai_yotube_automation.git',
   },
   {
     title: 'DevOps & SecOps Project',
@@ -22,6 +24,7 @@ const projects = [
     details: 'Integrated pytest, code coverage, and OpenTelemetry tracing to Cloud Operations.',
     tags: ['DevOps', 'Docker', 'CI/CD', 'Cloud Run'],
     featured: false,
+    repo: 'https://github.com/dileepkumarthiruvenkadam-source/devsecops-hhn-project.git',
   },
   {
     title: 'Cloud Infrastructure IaC',
@@ -29,6 +32,8 @@ const projects = [
     details: 'Orchestrated containerized services using Kubernetes (GKE) with automated provisioning.',
     tags: ['GCP', 'Terraform', 'Kubernetes', 'IaC'],
     featured: false,
+    repo: 'https://github.com/dileepkumarthiruvenkadam-source/cc-kubernetes-HHN.git',
+    repo1: 'https://github.com/dileepkumarthiruvenkadam-source/cc-terraform-backup-HHN.git',
   },
   {
     title: '3D Traffic Simulation',
@@ -36,6 +41,7 @@ const projects = [
     details: 'Implemented traffic lights, pathfinding, and collision handling for urban flow.',
     tags: ['Unity', 'C#', 'Simulation'],
     featured: false,
+    repo: 'https://github.com/dileepkumarthiruvenkadam-source/traffic-simulation.git',
   },
   {
     title: 'UI/UX Design Project',
@@ -125,17 +131,19 @@ export const Projects = () => {
                     </a>
                   ) : null}
 
-                  {project.demo ? (
+                  {project.repo1 ? (
                     <a
-                      href={project.demo}
+                      href={project.repo1}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 uppercase tracking-wider"
                     >
-                      <ExternalLink size={16} className="transition-transform duration-300" />
-                      Demo
+                      <Github size={16} className="transition-transform duration-300" />
+                      Code (alt)
                     </a>
                   ) : null}
+
+                  {/* Demo link intentionally disabled for now */}
                 </div>
               </div>
             </div>

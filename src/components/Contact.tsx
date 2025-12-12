@@ -12,11 +12,47 @@ const contactInfo = [
 export const Contact = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: 'Message sent!', description: "Thank you for reaching out. I'll get back to you soon." });
-    setFormData({ name: '', email: '', message: '' });
+
+    if (submitting) return;
+    setSubmitting(true);
+
+    // Netlify Forms requires a form-name field and optional honeypot 'bot-field'.
+    const payload = {
+      'form-name': 'contact',
+      'bot-field': formData['bot-field'] || '',
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    } as Record<string, string>;
+
+    const encode = (data: Record<string, string>) =>
+      Object.keys(data)
+        .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+        .join('&');
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode(payload),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || 'Failed to submit form');
+      }
+
+      toast({ title: 'Message submitted!', description: "Thanks — I'll reply soon." });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err: any) {
+      toast({ title: 'Submission failed', description: 'Please email me directly at dileepkumarthiruvenkadam@gmail.com', variant: 'destructive' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -65,7 +101,11 @@ export const Contact = () => {
 
           {/* Contact Form */}
           <div className={`transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <form onSubmit={handleSubmit} className="card-cyber p-8">
+            <form onSubmit={handleSubmit} className="card-cyber p-8" data-netlify="true" name="contact" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>Don’t fill this out if you're human: <input name="bot-field" value={((formData as any)['bot-field'] || '')} onChange={(e) => setFormData({ ...formData, ['bot-field']: e.target.value })} /></label>
+              </p>
               <div className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-xs font-bold mb-2 uppercase tracking-wider text-primary">Name</label>
@@ -103,9 +143,9 @@ export const Contact = () => {
                     placeholder="Your message..."
                   />
                 </div>
-                <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
+                <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2" disabled={submitting}>
                   <Send size={18} />
-                  Send Message
+                  {submitting ? 'Sending…' : 'Send Message'}
                 </button>
               </div>
             </form>

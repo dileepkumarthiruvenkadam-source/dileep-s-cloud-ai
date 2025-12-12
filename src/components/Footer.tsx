@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Linkedin, Mail, Heart } from 'lucide-react';
 import { getVisitorLocation } from '@/lib/getVisitorLocation';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/dileep-kumar-thiruvenkadam-81253a1b7', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:dileepkumarthiruvenkadam@gmail.com', label: 'Email' },
 ];

@@ -37,7 +37,7 @@ jobs:
           branch: gh-pages
           folder: dist
           token: ${{ secrets.PAGES_PAT }}
-          singleCommit: true
+          single-commit: true
 
       - name: Ensure Pages site is configured and built
         uses: actions/github-script@v6
