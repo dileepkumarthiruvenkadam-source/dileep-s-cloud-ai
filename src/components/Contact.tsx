@@ -100,7 +100,7 @@ export const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className={`transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+          {/* <div className={`transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <form onSubmit={handleSubmit} className="card-cyber p-8" data-netlify="true" name="contact" netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
@@ -149,7 +149,7 @@ export const Contact = () => {
                 </button>
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
