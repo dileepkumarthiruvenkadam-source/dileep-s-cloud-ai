@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex">
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <noscript>
+      This page requires JavaScript. <a href="/dileep-s-cloud-ai/">Return to home</a>.
+    </noscript>
+    <script>
+      // SPA fallback for GitHub Pages: fetch the published index and write it into the document
+      (function(){
+        const repoBase = '/dileep-s-cloud-ai';
+        const indexUrl = repoBase + '/index.html';
+        try {
+          fetch(indexUrl, {cache: 'no-store'}).then(function(res){
+            if (!res.ok) throw new Error('Failed to fetch index');
+            return res.text();
+          }).then(function(html){
+            document.open();
+            document.write(html);
+            document.close();
+            // keep the original path in the address bar
+            history.replaceState({}, '', location.pathname + location.search);
+          }).catch(function(){
+            // fallback redirect to repo root
+            location.replace(repoBase + '/');
+          });
+        } catch (e) {
+          location.replace(repoBase + '/');
+        }
+      })();
+    </script>
+  </body>
+</html>
