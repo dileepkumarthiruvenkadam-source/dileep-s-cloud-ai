@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { Linkedin, Mail, Heart } from 'lucide-react';
-import { getVisitorLocation } from '@/lib/getVisitorLocation';
 
 const socialLinks = [
   { icon: Linkedin, href: 'https://www.linkedin.com/in/dileep-kumar-thiruvenkadam-81253a1b7', label: 'LinkedIn' },
@@ -9,62 +7,6 @@ const socialLinks = [
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-  // Client-side toggle (default: disabled). Set VITE_COLLECT_LOCATION_ENABLED=true to re-enable.
-  const COLLECT_ENABLED = (import.meta as any).env?.VITE_COLLECT_LOCATION_ENABLED === 'true';
-
-  useEffect(() => {
-    if (!COLLECT_ENABLED) return; // collection disabled by default
-    let mounted = true;
-
-    const sendAndPost = async () => {
-      try {
-        const loc = await getVisitorLocation();
-        if (!mounted) return;
-        console.debug('Visitor location (approx):', loc);
-        try {
-          await fetch('/.netlify/functions/collect-location', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ location: loc, page: window.location.pathname, ua: navigator.userAgent }),
-          });
-        } catch (e) {
-          console.debug('collect-location post error', e);
-        }
-      } catch (e) {
-        // ignore lookup errors
-      }
-    };
-
-    // send on initial mount
-    sendAndPost();
-
-    // Listen for SPA navigation changes (pushState/replaceState/popstate)
-    const onLocationChange = () => {
-      sendAndPost();
-    };
-
-    // Monkey-patch history methods to emit a custom event
-    const _wr = (type) => {
-      const orig = history[type];
-      return function () {
-        const res = orig.apply(this, arguments);
-        const ev = new Event('locationchange');
-        window.dispatchEvent(ev);
-        return res;
-      };
-    };
-    history.pushState = _wr('pushState');
-    history.replaceState = _wr('replaceState');
-
-    window.addEventListener('popstate', onLocationChange);
-    window.addEventListener('locationchange', onLocationChange);
-
-    return () => {
-      mounted = false;
-      window.removeEventListener('popstate', onLocationChange);
-      window.removeEventListener('locationchange', onLocationChange);
-    };
-  }, []);
 
   return (
     <footer className="py-12 border-t border-primary/20 relative">
