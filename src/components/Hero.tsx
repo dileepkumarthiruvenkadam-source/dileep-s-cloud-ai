@@ -57,8 +57,8 @@ export const Hero = () => {
               </button>
               {showResume && (
                 <a
-                  href="/Dileep_Resume.pdf"
-                  download="Dileep_Resume.pdf"
+                  href="/dileep_resume.pdf"
+                  download="dileep_resume.pdf"
                   className="btn-secondary flex items-center justify-center gap-2 group"
                 >
                   <Download size={18} className="transition-transform group-hover:translate-y-1" />
