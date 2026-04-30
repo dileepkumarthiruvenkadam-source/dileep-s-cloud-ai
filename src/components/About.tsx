@@ -84,7 +84,7 @@ export const About = () => {
 
             <div className="space-y-4 text-muted-foreground mt-6">
               <p>
-                I'm a DevOps and AI Engineer experienced in designing and deploying scalable 
+                I'm an Associate Software Developer with 2+ years of experience in designing and deploying scalable 
                 applications on the cloud. My expertise spans CI/CD pipeline development, 
                 infrastructure as code, container orchestration, and integrating AI/LLM 
                 capabilities into software workflows.
