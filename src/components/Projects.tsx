@@ -3,22 +3,6 @@ import { useInView } from '@/hooks/useInView';
 
 const projects = [
   {
-    title: 'Nunnarivu AI Integration',
-    description: 'Experimental AI-driven layer integrating LLM agents with system workflows and automation logic.',
-    details: 'Backend components in Python with custom APIs, leveraging prompt engineering and agent behavior design.',
-    tags: ['Python', 'LLM', 'AI', 'APIs'],
-    featured: true,
-    repo: 'https://github.com/dileepkumarthiruvenkadam-source/nunnarivu.git',
-  },
-  {
-    title: 'YouTube Video Pipeline',
-    description: 'End-to-end automated pipeline converting text prompts into YouTube-ready videos.',
-    details: 'Includes LLM reasoning, script generation, TTS, video rendering, and containerized modules.',
-    tags: ['LLM', 'TTS', 'Containers', 'Automation'],
-    featured: true,
-    repo: 'https://github.com/dileepkumarthiruvenkadam-source/ai_yotube_automation.git',
-  },
-  {
     title: 'DevOps & SecOps Project',
     description: 'REST API in Docker with CI/CD, security scanning via Snyk, deployed to Cloud Run.',
     details: 'Integrated pytest, code coverage, and OpenTelemetry tracing to Cloud Operations.',

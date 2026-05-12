@@ -2,10 +2,11 @@ import { Award } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
 const certifications = [
-  { title: 'AWS Academy Cloud Developing', issuer: 'Amazon Web Services', icon: '☁️' },
-  { title: 'Cloud Computing & Distributed Systems', issuer: 'NPTEL', icon: '🌐' },
-  { title: 'DSA Using Python', issuer: 'NPTEL', icon: '🐍' },
-  { title: 'Problem Solving in Python', issuer: 'NPTEL', icon: '💻' },
+  { title: 'AWS Academy Cloud Developing', issuer: ' ', icon: '☁️' },
+  { title: 'Cloud Computing & Distributed Systems', issuer: ' ', icon: '🌐' },
+  { title: 'DSA Using Python', issuer: ' ', icon: '🐍' },
+  { title: 'Problem Solving in Python', issuer: ' ', icon: '💻' },
+  { title: 'Google Data Analytics Professional Certificate', issuer: 'Google', icon: '📊' },
 ];
 
 export const Certifications = () => {
