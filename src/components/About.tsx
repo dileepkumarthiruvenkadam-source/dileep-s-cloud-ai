@@ -45,11 +45,11 @@ export const About = () => {
                 </div>
                 
                 {/* Stats */}
-                <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-primary/20">
+                <div className="mt-8 grid grid-cols-2 gap-4 pt-6 border-t border-primary/20">
                   {[
                     { value: '2+', label: 'Years' },
                     { value: '6+', label: 'Projects' },
-                    { value: '4', label: 'Certs' },
+              
                   ].map((stat, index) => (
                     <div 
                       key={stat.label}

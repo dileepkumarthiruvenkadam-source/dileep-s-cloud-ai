@@ -1,5 +1,4 @@
 import { ArrowDown, Download, FolderOpen } from 'lucide-react';
-import profileImage from '@/assets/profile.jpg';
 
 export const Hero = () => {
   const handleScrollToProjects = () => {
@@ -57,8 +56,8 @@ export const Hero = () => {
               </button>
               {showResume && (
                 <a
-                  href="/Dileep_Kumar_Resume.pdf"
-                  download="Dileep_Kumar_Resume.pdf"
+                  href="/DILEEP_KUMAR_THIRUVENKADAMV3.pdf"
+                  download="DILEEP_KUMAR_THIRUVENKADAM_CV.pdf"
                   className="btn-secondary flex items-center justify-center gap-2 group"
                 >
                   <Download size={18} className="transition-transform group-hover:translate-y-1" />
@@ -76,81 +75,12 @@ export const Hero = () => {
               
               {/* Main HUD Container */}
               <div className="relative animate-float">
-                {/* Top status bar */}
-                <div className="flex justify-between items-start mb-2 text-[10px] uppercase tracking-wider">
-                  <div className="text-primary font-mono">
-                    <span className="opacity-60">SYS:</span> ONLINE
-                  </div>
-                  <div className="flex gap-1">
-                    {[...Array(8)].map((_, i) => (
-                      <div key={i} className={`w-1 h-3 ${i < 6 ? 'bg-primary' : 'bg-primary/30'}`} />
-                    ))}
-                  </div>
-                  <div className="text-muted-foreground font-mono">
-                    <span className="opacity-60">ID:</span> DK-001
-                  </div>
-                </div>
-
-                {/* HUD Frame */}
-                <div className="relative border border-primary/30 bg-card/40 backdrop-blur-md overflow-hidden">
-                  {/* Corner brackets */}
-                  <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary z-20" />
-                  <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary z-20" />
-                  <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary z-20" />
-                  <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary z-20" />
-                  
-                  {/* Tracking label */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-background px-3 py-0.5 border border-primary/50 z-20">
-                    <span className="text-[10px] text-primary font-mono uppercase tracking-widest">OBJ. 001 • TRACKING</span>
-                  </div>
-
-                  {/* Profile Image */}
-                  <div className="relative">
-                    <img 
-                      src={profileImage} 
-                      alt="Dileep Kumar" 
-                      className="w-full h-auto grayscale contrast-125 brightness-90"
-                      style={{
-                        maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
-                      }}
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-                    
-                    {/* Crosshair overlay */}
-                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 pointer-events-none opacity-40">
-                      <div className="absolute top-0 left-1/2 w-px h-4 bg-primary -translate-x-1/2" />
-                      <div className="absolute bottom-0 left-1/2 w-px h-4 bg-primary -translate-x-1/2" />
-                      <div className="absolute left-0 top-1/2 w-4 h-px bg-primary -translate-y-1/2" />
-                      <div className="absolute right-0 top-1/2 w-4 h-px bg-primary -translate-y-1/2" />
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 border border-primary rounded-full" />
-                    </div>
-                  </div>
-                  
-                  {/* Name bar at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-card to-transparent z-10">
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-8 h-px bg-gradient-to-r from-transparent to-primary" />
-                      <p className="text-primary text-xs uppercase tracking-[0.3em] font-mono font-bold">Dileep Kumar</p>
-                      <div className="w-8 h-px bg-gradient-to-l from-transparent to-primary" />
-                    </div>
-                  </div>
-
-                  {/* Bottom status */}
-                  <div className="absolute -bottom-3 right-4 bg-background px-2 py-0.5 z-20">
-                    <span className="text-[10px] text-primary/70 font-mono">LOCKED</span>
-                  </div>
-                </div>
-
-                {/* Bottom info bar */}
-                <div className="flex justify-between items-center mt-2 text-[10px] font-mono uppercase tracking-wider">
-                  <div className="text-muted-foreground">
-                    <span className="text-primary">◉</span> SIGNAL: NORMAL
-                  </div>
-                  <div className="text-muted-foreground">
-                    ACCESS: <span className="text-primary">GRANTED</span>
-                  </div>
+                <div className="relative border border-primary/30 bg-card/40 backdrop-blur-md rounded-lg overflow-hidden">
+                  <img 
+                    src="/Dileep.jpg" 
+                    alt="Dileep Kumar" 
+                    className="w-full h-auto"
+                  />
                 </div>
               </div>
             </div>
