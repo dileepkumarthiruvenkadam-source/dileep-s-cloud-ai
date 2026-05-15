@@ -60,7 +60,10 @@ export const Navigation = () => {
             onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
             className="font-heading font-bold text-xl text-foreground hover:text-primary transition-colors"
           >
-            <span className="text-primary text-glow-active">Dileep Kumar Thiruvenkadam</span>
+            <span className="text-primary text-glow-active">
+              <span className="hidden sm:inline">Dileep Kumar Thiruvenkadam</span>
+              <span className="sm:hidden">Dileep K.</span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}

@@ -88,7 +88,7 @@ export const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-up animation-delay-700">
+        <div className="absolute bottom-8 sm:bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-up animation-delay-700">
           <a
             href="#about"
             onClick={(e) => {
