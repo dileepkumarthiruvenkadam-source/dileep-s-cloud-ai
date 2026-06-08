@@ -56,7 +56,7 @@ export const Hero = () => {
               </button>
               {showResume && (
                 <a
-                  href="/DILEEP_KUMAR_THIRUVENKADAMV3.pdf"
+                  href="/DILEEP_KUMAR_THIRUVENKADAMV4.pdf"
                   download="DILEEP_KUMAR_THIRUVENKADAM_CV.pdf"
                   className="btn-secondary flex items-center justify-center gap-2 group"
                 >
